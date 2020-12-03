@@ -1,0 +1,381 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Roulette 3D</title>
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<link href="styles/shCore.css" rel="stylesheet" type="text/css" >
+	<link href="styles/shCoreDefault.css" rel="stylesheet" type="text/css" >
+	<link href="styles/shThemeDefault.css" rel="stylesheet" type="text/css" >
+	
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+	
+	<script type="text/javascript" src="scripts/shCore.js"></script>
+	<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+	<script type="text/javascript" src="scripts/shBrushXml.js"></script>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;Roulette 3D&rdquo; Documentation by &ldquo;Code This Lab S.r.l.&rdquo; v1.0</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;Roulette 3D&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 17/07/2014<br>
+					By: <a href="http://www.codethislab.com" target="_blank">Code This Lab S.r.l.</a><br>
+					Email: <a href="mailto:info@codethislab.com">info@codethislab.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing our game. If you have any questions that are beyond the scope of this help file, please feel free to email via user page contact form <a href="http://codecanyon.net/user/codethislab?ref=codethislab">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#desc">Description</a></li>
+			<li><a href="#content">Folder Content</a></li>
+			<li><a href="#start">Getting Started</a></li>
+			<li><a href="#win_occurrence">Set Win Occurrence</a></li>
+			<li><a href="#htmlStructure">HTML Structure</a></li>
+			<li><a href="#cssFiles">CSS Files and Structure</a></li>
+			<li><a href="#javascript">JavaScript</a></li>
+			<li><a href="#game_function">Game functions</a></li>
+			<li><a href="#disable_sound">Disable Sounds</a></li>
+			<li><a href="#wp">Wordpress Plugin</a></li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="desc"><strong>A) Description</strong> - <a href="#toc">top</a></h3>
+		<p>Roulette 3D is a HTML5 casino game. Enjoy this roulette game with high quality 3D graphic! <br>
+		    The game contains all the main roulette game features like Voisins zero, tier, orphelins, neighbor,final bets.
+			The ZIP package contains the game with 750x600 resolution that automatically scales PROPORTIONALLY to fit current screen device and all the assets to grant complete game customization. <br>
+			Sounds are enabled for mobile but we can't grant full audio compatibility on all mobile devices due to some well-know issue between some mobile-browser and HTML5.
+			So if you want to avoid sound loading, please read <a href="#disable_sound">Disable Sound</a> section). <br>
+			<strong>WARNING:</strong> Sounds can't be enabled for Windows Phone as this kind of device have unsolved issues with 'audio' and 'video' tag.
+		</p>
+		<hr>
+		
+		<h3 id="content"><strong>B) Folder Content</strong> - <a href="#toc">top</a></h3>
+		<ol>
+			<li><strong>ctl_arcade_wp_plugin:</strong></li>
+			This folder contains the zip package that can be used with our Wordpress plugin "CTL Arcade" (http://codecanyon.net/item/ctl-arcade-wordpress-plugin/13856421).
+			<li><strong>game</strong></li>
+			This folder contains the full game source code ready to be edited.
+			<li><strong>live_demo</strong></li>
+			This folder contains the obfuscated code. You should upload this folder on your server if you don't need to make any changes.
+			<li><strong>readme</strong></li>
+			This folder contains the package instructions.
+			<li><strong>thumbs</strong></li>
+			This folder contains all game icons.
+		</ol>
+		<hr>
+		
+		<h3 id="start"><strong>C) Getting Started</strong> - <a href="#toc">top</a></h3>
+			<p>To install the game just upload on your server the game folder live_demo.
+			
+			<ul>
+				<li><strong>Game Embedding: </strong>The proper way to embed the game is in a full-screen web page or in an iframe.<br>
+                                        In the first case the game will fit the screen size, in the second, that of the iframe.<br>
+                                        If the iframe size matches that of the screen, the game will fit accordingly.<br> 
+                                        The alignment will be proportioned to the aspect ratio of the game.<br>
+                                        To install the game in a WordPress website, we suggest to use our plugin <a href="http://codecanyon.net/item/ctl-arcade-wordpress-plugin/13856421?ref=codethislab"> CTL Arcade </a>. <br><br>
+				
+				<li><strong>Save Score:</strong> if you need to call your php function for saving score each time roulette is spinned, you can add it in the <strong>index.html</strong> file:
+					<pre class="brush: js">
+						$(document).ready(function(){
+							var oMain = new CMain();
+							
+							$(oMain).on("save_score", function(evt,iMoney) {
+								//alert("iMoney: "+iMoney );
+							});
+						});
+					</pre>
+				</li>
+				<li> <strong>Localization:</strong> You can easily change game text for different languages, changing string in <strong>CLang.js</strong></li>
+				
+				<pre class="brush: js">
+					TEXT_GAMEOVER  = "GAME OVER";
+					TEXT_CONGRATS  = "CONGRATULATIONS";
+					TEXT_MONEY     = "MONEY";
+					TEXT_PLAY      = "PLAY";
+					TEXT_BET       = "BET";
+					TEXT_COIN      = "COIN";
+					TEXT_MAX_BET   = "MAX BET";
+					TEXT_INFO      = "INFO";
+					TEXT_LINES     = "LINES";
+					TEXT_SPIN      = "SPIN";
+					TEXT_EXIT      = "EXIT";
+					TEXT_RECHARGE  = "RECHARGE";
+					TEXT_CLEAR_LAST_BET = "CLEAR LAST BET";
+					TEXT_CLEAR_ALL_BET = "CLEAR ALL BETS";
+					TEXT_VOISINS_ZERO = "VOISINS DU ZERO";
+					TEXT_TIER = "TIER";
+					TEXT_ORPHELINS = "ORPHELINS";
+					TEXT_NEIGHBORS = "NEIGHBORS";
+					TEXT_FINALSBET = "FINALS BET";
+					TEXT_WIN       = "WIN";
+					TEXT_HELP_WILD = "THIS SIMBOL IS A JOLLY WHICH \nCAN REPLACE ANY OTHER \nSYMBOL TO MAKE UP A COMBO";
+					TEXT_ERROR_NO_MONEY_MSG="NOT ENOUGH MONEY\n FOR THIS BET!!";
+					TEXT_ERROR_MAX_BET_REACHED="MAX BET REACHED!!";
+					TEXT_MIN_BET = "MIN BET";
+					TEXT_MAX_BET = "MAX BET";
+					TEXT_DISPLAY_MSG_WAITING_BET = "WAITING FOR\n YOUR BET";
+					TEXT_SPINNING = "SPINNING...";
+					TEXT_DISPLAY_MSG_PLAYER_WIN="PLAYER WON ";
+					TEXT_IMAGE_FAIL = "CAN'T FIND FILE:";
+					TEXT_NO_MONEY = "YOU DON'T HAVE ENOUGH MONEY!!!";
+					TEXT_RECHARGE_MSG = "PLEASE CLICK RECHARGE BUTTON TO PLAY AGAIN";
+					
+					TEXT_CONGRATULATIONS = "Congratulations!";
+					TEXT_SHARE_1 = "You collected <strong>" 
+					TEXT_SHARE_2 = " points</strong>!<br><br>Share your score with your friends!";
+					TEXT_SHARE_3 = "My score is ";
+					TEXT_SHARE_4 = " points! Can you do better?";		
+					</pre>
+				
+				<li><strong>Game option:</strong> You can easily customize game setting when creating a new instance of the game in <strong>index.html</strong> file</li>
+				<pre class="brush: js">
+					var oMain = new CMain({
+                                    money: 1000,      //STARING CREDIT FOR THE USER
+									min_bet: 0.1,     //MINIMUM BET
+									max_bet: 100,     //MAXIMUM BET
+									time_bet: 10000,  //TIME TO WAIT FOR A BET IN MILLISECONDS. SET 0 IF YOU DON'T WANT BET LIMIT
+									time_winner: 3000, //TIME FOR WINNER SHOWING IN MILLISECONDS    
+									win_occurrence: 25, //Win occurrence percentage (100 = always win). 
+														//SET THIS VALUE TO -1 IF YOU WANT WIN OCCURRENCE STRICTLY RELATED TO PLAYER BET ( SEE DOCUMENTATION)
+									casino_cash:4000,    //The starting casino cash that is recharged by the money lost by the user
+									fullscreen:true, //SET THIS TO FALSE IF YOU DON'T WANT TO SHOW FULLSCREEN BUTTON
+                                    check_orientation:true,     //SET TO FALSE IF YOU DON'T WANT TO SHOW ORIENTATION ALERT ON MOBILE DEVICES
+									num_hand_before_ads:2    //NUMBER OF HANDS TO COMPLETE, BEFORE TRIGGERING SAVE_SCORE EVENT. USEFUL FOR INTER-LEVEL AD EVENTUALLY.
+                                });
+				</pre>
+			</ul>
+			</p>
+		<hr>
+		
+		<h3 id="win_occurrence"><strong>D) Set Win Occurrence</strong> - <a href="#toc">top</a></h3>
+			<p>
+				You can set the win occurrence percentage, editing the parameter 'win_occurrence' in index.html. Set a value between 0 and 100. <br>
+				If you want to keep win occurrence completely random, set this value to -1. In this case the win occurence is related to the player bet ( e.g.: red/black bet have 50% win occurrence; 
+				betting on a single number has around 2.5% win occurrence and so on...)
+				<br><br>
+				The win occurrence is strictly related to the 'casino_cash' parameter, that is the amount of money that the casino table currently have. So if the casino money are less than the
+				current player bet, the player can't win.
+			</p>
+		<hr>
+		
+		<h3 id="htmlStructure"><strong>E) HTML Structure</strong> - <a href="#toc">top</a></h3>
+		<p>This game have the canvas tag in the body. The ready event into the body calls the main function of the game: CMain(). 
+		<br>The head section declares all the javascript functions of the game. The whole project uses a typical object-oriented approach.<br> 
+		In the init function there are 6 mapped <a href="#events">events</a> that can be useful eventually for stats</p>
+		
+		<pre class="brush: js">
+			<body  ondragstart="return false;" ondrop="return false;" >
+				  <script>
+				   $(document).ready(function(){
+							 var oMain = new CMain();
+							
+							 $(oMain).on("recharge", function(evt) {
+									 //alert("recharge");
+							});
+							 
+							$(oMain).on("start_session", function(evt) {
+									//THIS EVENT IS TRIGGERED WHEN PLAY BUTTON IN MENU SCREEN IS CLICKED
+							 });
+							 
+							$(oMain).on("end_session", function(evt) {
+									//THIS EVENT IS TRIGGERED WHEN GAME IS OVER OR THE EXIT BUTTON IS CLICKED.
+							});
+							 
+							$(oMain).on("save_score", function(evt,iScore) {
+									//THIS EVENT IS TRIGGERED WHEN GAME IS OVER. IT CAN BE USEFUL TO CALL PHP SCRIPTS (NOT PROVIDED IN THE PACKAGE) THAT SAVE THE SCORE.
+							 });
+							 
+							 $(oMain).on("show_interlevel_ad", function(evt) {
+									//THIS EVENT IS TRIGGERED WHEN GAME OVER PANEL IS CLOSED. MAY BE USEFUL TO CALL ADS SCRIPT. 
+							 });
+							 
+							 $(oMain).on("share_event", function(evt,iScore) {
+									//THIS EVENT IS TRIGGERED WHEN GAME OVER PANEL IS SHOWN. CAN BE USEFUL TO CALL SHARING FEATURE SCRIPTS.
+							 });
+				   });
+						
+				  </script>
+				  
+				<canvas id="canvas" class='ani_hack' width="750" height="600"> </canvas>
+			</body>
+		</pre>
+		
+		<hr>
+
+		<h3 id="cssFiles"><strong>F) CSS Files and Structure</strong> - <a href="#toc">top</a></h3>
+
+		<p>The game use two CSS files. The first one is a generic reset file. Many browser interpret the default behavior of html elements differently. By using a general reset CSS file, we can work round this. 
+		Keep in mind, that these values might be overridden somewhere else in the file.</p> 
+
+		<p>The second file contains all of the specific stylings for the canvas and some hack to be fully compatible with all most popular mobile devices</p>  
+
+		<hr>
+		
+		<h3 id="javascript"><strong>G) JavaScript</strong> - <a href="#toc">top</a></h3>
+		
+		<p>This game contains:</p>
+		
+		<ol>
+			<li>jQuery</li>
+			<li>Our custom scripts</li>
+			<li>CreateJs plugin</li>
+		</ol>
+		  
+		<ol>
+			<li>jQuery is a Javascript library that greatly reduces the amount of code that you must write.</li>
+			<li>The game have the following js files:
+	
+			<ul>
+				<li>CMain: the main class called by the index file. <br>This file controls the sprite_lib.js file that manages the sprite loading, the loop game and initialize the canvas with the CreateJs library</li>
+				<li>ctl_utils: this file manages the canvas resize and its centering</li>
+				<li>sprite_lib: this class loads all images declared in the main class</li>
+				<li>settings: general game settings</li>
+				<li>CLang: global string variables for language localization</li>
+				<li>CPreloader: simple text preloader to show resources loading progress</li>
+				<li>CMenu: simple menu with play button</li>
+				<li>CGfxButton: this class create a standard button</li>
+				<li>CTextButton: this class create a standard text button</li>
+				<li>CGame: this class manages the game logic</li>
+				<li>CBetTableButton: </li>
+				<li>CInterface: this class controls game GUI that contains text and buttons</li>
+				<li>CGameOver: this class controls the game over panel that appears when player lose all the lives</li>
+				<li>CBetTextButton: this class contains all infos relative to symbols, combos and their animations</li>
+				<li>CEnlight: this class manages the sprites that enlight bets on table</li>
+				<li>CFiche: this class manages the fiche sprite</li>
+				<li>CFicheBut: the buttons on table to select the fiche</li>
+				<li>CFichesController: this class manages the fiches on table</li>
+				<li>CFinalBetPanel: this class manages the Final Bet Panel</li>
+				<li>CHistoryRow: this class store all the number extracted</li>
+				<li>CMsgBox: this class manages the message box that appear for warning</li>
+				<li>CNeighborsPanel: this class manages the Neighbor panel</li>
+				<li>CRouletteSettings: this class contains all the info about roulette spinning fames, fiche values, etc..</li>
+				<li>CSeat: this class manages some user info like money, current bet, etc...</li>
+				<li>CTableController: this class manages all table bet button</li>
+				<li>CTweenController: this class manages the fiches tweening</li>
+				<li>CWheelAnim: this class manages the roulette wheel animation on the left</li>
+				<li>CWheelTopAnim: this class manages the roulette wheel top-view animation</li>
+			</ul>
+
+			</li>
+			<li>CreateJs is a suite of modular libraries and tools which work together to enable rich interactive content on open web technologies via HTML5.
+			</li>
+		</ol>
+		
+		<p>Resuming, the complete game flow is the following: </p>
+		<ol>
+			<li>The index.html file calls the CMain.js file after ready event is called</li>
+			<li>The main class calls CPreloader.js to init preloader text and start sprite loading</li>
+			<li>When all sprites contained in "/sprites" folder are loaded, the main class removes the preloader and calls the CMenu.js file that shows the main menu</li>
+			<li>If user click on the play button in main menu, the CGame.js class is called and the game starts</li>
+			<li>The User can start roulette spinning, clicking one of the chips on table</li>
+			<li>If user click on the exit button in the up-left corner, the game returns to the menu screen</li>	
+		</ol>		
+		
+		<hr>
+		
+		<h3 id="game_function"><strong>H) Game functions</strong> - <a href="#toc">top</a></h3>
+			In this section will be explained all the most important functions used in <strong>CGame.js</strong> file. <br><br>
+		
+		<ul>
+			<li><strong>_init()</strong> <br>
+				This function attach on the canvas some game sprites like background (oBg), GUI and initialize Table Controller, Fiche Controller and other panels.
+			</li>
+			<li><strong>unload()</strong> <br>
+				This function removes all images from canvas and event listeners on buttons. It's called when user decide to exit from the game.
+			</li>
+			<li><strong>_generateWinLoss()</strong> <br>
+				This function choose randomically if the user should win or lose after wheel spinning.
+			</li>
+			<li><strong>_rouletteAnimEnded()</strong> <br>
+				This function is called when wheel spinning is finished.
+			</li>
+			<li><strong>onSpin()</strong> <br>
+				This function is called when user click spin button.
+			</li>
+			<li><strong>_onShowBetOnTable()</strong> <br>
+				This function shows the chips on the table.
+			</li>
+			<li><strong>update()</strong> <br>
+				This function manages the game loop.
+			</li>
+			
+		</ul>
+		
+		<hr>
+		
+		<h3 id="disable_sound"><strong>J) Disable Sounds</strong> - <a href="#toc">top</a></h3>
+		<p>If you want to disable all the sounds for mobile devices, you have to change the following value in settings.js file:</p>
+			<pre class="brush: js">var DISABLE_SOUND_MOBILE = true;</pre>
+		
+		<br><br>
+		<h3 id="wp"><strong>J) Wordpress Plugin</strong> - <a href="#toc">top</a></h3>
+		<p><a href="http://codecanyon.net/item/ctl-arcade-wordpress-plugin/13856421?ref=codethislab">CTL Arcade</a> will allow you to add a real arcade on your worpress website, in this way your users will be more involved and will stay connected longer.<br><br>
+			It's possible to add Ads banner at the beginning of each game and at the end of each level. This will give you a new tool to increase your revenues.<br><br>
+			Your own users will promote your website sharing their scores on the main Social Networks, with no extra costs for you.<br><br>
+			You'll get by default the score-sharing on Twitter. To add Facebook just follow the guideline below.<br><br>
+			3 widgets can be added in your pages through a shortcode.<br>
+			<ul>
+				<li><strong>Game iframe</strong></li>
+				<li><strong>Rate the Game</strong></li>
+				<li><strong>Leaderboard</strong></li>
+			</ul>
+			Minimum Requirements:<br><br>
+			<ul>
+				<li><strong>PHP 4.3</strong></li>
+				<li><strong>WordPress 4.3.1</strong></li>
+				<li><strong>HTML5</strong></li>
+				<li><strong>Canvas</strong></li>
+				<li><strong>Javascript / jQuery</strong></li>
+			</ul>
+			
+			<strong>This plugin is designed to work only with games built by Code This Lab.</strong>
+			<br><br>
+			You can find it <a href="http://codecanyon.net/item/ctl-arcade-wordpress-plugin/13856421?ref=codethislab">here!</a> 
+			
+		</p>
+		<a href="http://codecanyon.net/item/ctl-arcade-wordpress-plugin/13856421?ref=codethislab">
+			<img src="assets/images/ctl_arcade.jpg" alt="ctl arcade" />
+		</a>
+		
+		<br><br>
+		<p>Once again, thank you so much for purchasing this game. Fell free to contact us if you have any questions or issue relating to this game. No guarantees, but we'll do our best to assist.</p> 
+		
+		<p class="append-bottom alt large"><a href="http://www.codethislab.com" target="_blank"><strong>CODE THIS LAB S.R.L.</strong></a></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div>
+	<!-- end div .container -->
+
+	<!-- Finally, to actually run the highlighter, you need to include this JS on your page -->
+	<script type="text/javascript">
+		 SyntaxHighlighter.all()
+	</script>
+</body>
+</html>
